@@ -14,7 +14,7 @@ mkdir -p ci4/app/Modules
 mv halberd-main ci4/app/Modules/halberd
 ```
 ## Configuration
-Add the following namespace to the *$psr4* array in *Config/Autoload.php*
+Add the following namespace to the *$psr4* array in *ci4/app/Config/Autoload.php*
 ```
 'Halberd' => APPPATH . 'Modules/halberd/'
 ```
