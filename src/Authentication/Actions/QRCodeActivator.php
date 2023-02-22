@@ -22,7 +22,6 @@ use PragmaRX\Google2FA\Google2FA;
 class QRCodeActivator implements ActionInterface
 {
     private string $type = 'qrcode_activate';
-    private string $issuer = isset($_ENV['grimpirate.halberd.issuer']) ? $_ENV['grimpirate.halberd.issuer'] : 'Halberd';
 
     /**
      * Shows the initial screen to the user with a QR code for activation
@@ -38,7 +37,7 @@ class QRCodeActivator implements ActionInterface
         }
 
         //helper('qrcode');
-        $qrcode = qrcode($this->issuer, $user->username, $this->createIdentity($user));
+        $qrcode = qrcode($this->issuer(), $user->username, $this->createIdentity($user));
 
         // Display the info page
         return view(setting('Auth.views')['action_qrcode_activate_show'], ['user' => $user, 'qrcode' => $qrcode]);
@@ -81,7 +80,7 @@ class QRCodeActivator implements ActionInterface
             session()->setFlashdata('error', lang('Auth.invalidActivateToken'));
 
             //helper('qrcode');
-            $qrcode = qrcode($this->issuer, $user->username, $secret);
+            $qrcode = qrcode($this->issuer(), $user->username, $secret);
 
             return view(setting('Auth.views')['action_qrcode_activate_show'], ['user' => $user, 'qrcode' => $qrcode]);
         }
@@ -162,5 +161,10 @@ class QRCodeActivator implements ActionInterface
     public function getType(): string
     {
         return $this->type;
+    }
+
+    public function issuer()
+    {
+        return $_ENV['grimpirate.halberd.issuer'] ?? 'Halberd';
     }
 }
