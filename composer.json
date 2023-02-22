@@ -23,6 +23,7 @@
             "src/Helpers/qrcode_helper.php"
         ]
     },
+    "minimum-stability": "dev",
     "archive": {
         "exclude": [
             "/LICENSE",
