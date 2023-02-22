@@ -22,7 +22,7 @@ use PragmaRX\Google2FA\Google2FA;
 class QRCodeActivator implements ActionInterface
 {
     private string $type = 'qrcode_activate';
-    private string $issuer = $_ENV['grimpirate.halberd.issuer'] ?? 'Halberd';
+    private string $issuer = isset($_ENV['grimpirate.halberd.issuer']) ? $_ENV['grimpirate.halberd.issuer'] : 'Halberd';
 
     /**
      * Shows the initial screen to the user with a QR code for activation
