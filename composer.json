@@ -25,11 +25,5 @@
             "src/Helpers/qrcode_helper.php"
         ]
     },
-    "minimum-stability": "dev",
-    "archive": {
-        "exclude": [
-            "/LICENSE",
-            "/README.md"
-        ]
-    }
+    "minimum-stability": "dev"
 }
