@@ -1,0 +1,32 @@
+{
+    "name": "grimpirate/halberd",
+    "description": "CodeIgniter4 Google Two-Factor Authentication Module for Shield",
+    "license": "MIT",
+    "homepage": "https://github.com/grimpirate/halberd",
+    "require": {
+        "php": "^7.4.3 || ^8.0",
+        "codeigniter4/shield": "^v1.0.0-beta.2",
+        "pragmarx/google2fa": "^8.0.0",
+        "bacon/bacon-qr-code": "^2.0.7"
+    },
+    "keywords": [
+        "codeigniter",
+        "codeigniter4",
+        "authentication",
+        "authorization"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Halberd\\": "src"
+        },
+        "files": [
+            "src/Helpers/qrcode_helper.php"
+        ]
+    },
+    "archive": {
+        "exclude": [
+            "/LICENSE",
+            "/README.md"
+        ]
+    }
+}
