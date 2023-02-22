@@ -24,6 +24,7 @@
         ]
     },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "archive": {
         "exclude": [
             "/LICENSE",
