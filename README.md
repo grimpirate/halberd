@@ -1,6 +1,15 @@
 # halberd
 A CodeIgniter Google Two-Factor Authentication Module for Shield
-## Installation
+## Prerequisites
+Assumes *codeigniter4/shield:dev-develop* has been preinstalled by composer
+```
+composer require codeigniter4/shield:dev-develop
+```
+## Installation (composer)
+```
+composer require grimpirate/halberd:dev-main
+```
+## Installation (manual)
 Assumes *ci4/* is the directory that contains *app/* and *vendor/*
 ```
 composer require pragmarx/google2fa --working-dir=ci4
