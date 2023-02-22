@@ -16,6 +16,7 @@ use CodeIgniter\Shield\Exceptions\LogicException;
 use CodeIgniter\Shield\Exceptions\RuntimeException;
 use CodeIgniter\Shield\Models\UserIdentityModel;
 
+use GrimPirate\Halberd\Config\Halberd;
 use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
 use PragmaRX\Google2FA\Google2FA;
 
@@ -37,7 +38,7 @@ class QRCodeActivator implements ActionInterface
         }
 
         //helper('qrcode');
-        $qrcode = qrcode($this->issuer(), $user->username, $this->createIdentity($user));
+        $qrcode = qrcode((new Halberd())->issuer, $user->username, $this->createIdentity($user));
 
         // Display the info page
         return view(setting('Auth.views')['action_qrcode_activate_show'], ['user' => $user, 'qrcode' => $qrcode]);
@@ -80,7 +81,7 @@ class QRCodeActivator implements ActionInterface
             session()->setFlashdata('error', lang('Auth.invalidActivateToken'));
 
             //helper('qrcode');
-            $qrcode = qrcode($this->issuer(), $user->username, $secret);
+            $qrcode = qrcode((new Halberd())->issuer, $user->username, $secret);
 
             return view(setting('Auth.views')['action_qrcode_activate_show'], ['user' => $user, 'qrcode' => $qrcode]);
         }
@@ -161,10 +162,5 @@ class QRCodeActivator implements ActionInterface
     public function getType(): string
     {
         return $this->type;
-    }
-
-    public function issuer()
-    {
-        return $_ENV['grimpirate.halberd.issuer'] ?? 'Halberd';
     }
 }

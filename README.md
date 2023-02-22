@@ -10,7 +10,7 @@ composer require codeigniter4/shield:dev-develop
 composer require grimpirate/halberd:dev-main
 ```
 ## Configuration
-In the application's *.env* *grimpirate.halberd.issuer* denotes the string that will appear on the Google Authenticator app as follows: ISSUER(username)
+In the application's *.env* file *halberd.issuer* denotes the string that will appear on the Google Authenticator app as follows: ISSUER(username)
 ```
-grimpirate.halberd.issuer = 'ISSUER'
+halberd.issuer = 'ISSUER'
 ```
