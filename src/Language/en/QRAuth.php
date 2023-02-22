@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Halberd\Language\en;
+namespace GrimPirate\Halberd\Language\en;
 // registerSuccess
 //send
 

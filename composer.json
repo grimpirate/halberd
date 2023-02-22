@@ -19,7 +19,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Halberd\\": "src"
+            "GrimPirate\\Halberd\\": "src"
         },
         "files": [
             "src/Helpers/qrcode_helper.php"

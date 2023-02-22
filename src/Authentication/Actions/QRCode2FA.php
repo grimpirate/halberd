@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Halberd\Authentication\Actions;
+namespace GrimPirate\Halberd\Authentication\Actions;
 
 use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RedirectResponse;

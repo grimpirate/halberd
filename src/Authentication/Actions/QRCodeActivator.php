@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Halberd\Authentication\Actions;
+namespace GrimPirate\Halberd\Authentication\Actions;
 
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -22,7 +22,7 @@ use PragmaRX\Google2FA\Google2FA;
 class QRCodeActivator implements ActionInterface
 {
     private string $type = 'qrcode_activate';
-    private string $issuer = 'CodeIgniter';
+    private string $issuer = $_ENV['grimpirate.halberd.issuer'] ?? 'Halberd';
 
     /**
      * Shows the initial screen to the user with a QR code for activation
@@ -37,7 +37,7 @@ class QRCodeActivator implements ActionInterface
             throw new RuntimeException('Cannot get the pending login User.');
         }
 
-        helper('qrcode');
+        //helper('qrcode');
         $qrcode = qrcode($this->issuer, $user->username, $this->createIdentity($user));
 
         // Display the info page
@@ -80,7 +80,7 @@ class QRCodeActivator implements ActionInterface
         if (! $authenticator->checkAction($identity, $postedToken)) {
             session()->setFlashdata('error', lang('Auth.invalidActivateToken'));
 
-            helper('qrcode');
+            //helper('qrcode');
             $qrcode = qrcode($this->issuer, $user->username, $secret);
 
             return view(setting('Auth.views')['action_qrcode_activate_show'], ['user' => $user, 'qrcode' => $qrcode]);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Halberd\Config;
+namespace GrimPirate\Halberd\Config;
 
 class Registrar
 {
@@ -9,13 +9,13 @@ class Registrar
     {
         return [
             'views' => [
-                'action_qrcode_activate_show'  => '\Halberd\Views\qrcode_activate_show',
-                'action_qrcode_2fa_verify'  => '\Halberd\Views\qrcode_2fa_verify',
-                'qrcode_layout'  => '\Halberd\Views\qrcode_layout',
+                'action_qrcode_activate_show'  => '\GrimPirate\Halberd\Views\qrcode_activate_show',
+                'action_qrcode_2fa_verify'  => '\GrimPirate\Halberd\Views\qrcode_2fa_verify',
+                'qrcode_layout'  => '\GrimPirate\Halberd\Views\qrcode_layout',
             ],
             'actions' => [
-                'register' => 'Halberd\Authentication\Actions\QRCodeActivator',
-                'login' => 'Halberd\Authentication\Actions\QRCode2FA',
+                'register' => 'GrimPirate\Halberd\Authentication\Actions\QRCodeActivator',
+                'login' => 'GrimPirate\Halberd\Authentication\Actions\QRCode2FA',
             ],
         ];
     }
