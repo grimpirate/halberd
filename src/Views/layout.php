@@ -7,7 +7,7 @@
     <title><?= lang('Auth.title2FA') ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
@@ -29,7 +29,7 @@
 
                         <!-- Code -->
                         <div class="mb-2">
-                            <input type="number" class="form-control" name="token" placeholder="000000" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" required />
+                            <input type="number" class="form-control" name="token" placeholder="000000" inputmode="numeric" pattern="[0-9]*" required />
                         </div>
 
                         <div class="d-grid col-8 mx-auto m-3">
