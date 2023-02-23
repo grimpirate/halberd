@@ -16,8 +16,8 @@ class Registrar
     }
 
     // Enable authorization on all routes except login, register, and auth
-    public static function Filters(): array
+    /*public static function Filters(): array
     {
         return ['globals' => ['before' => ['session' => ['except' => ['login*', 'register', 'auth/a/*']]]]];
-    }
+    }*/
 }
