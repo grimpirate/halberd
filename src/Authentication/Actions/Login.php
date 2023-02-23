@@ -14,7 +14,6 @@ use CodeIgniter\Shield\Exceptions\RuntimeException;
 use CodeIgniter\Shield\Models\UserIdentityModel;
 
 use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
-use PragmaRX\Google2FA\Google2FA;
 
 /**
  * Class Login
@@ -71,7 +70,7 @@ class Login implements ActionInterface
         }
 
         $identity = $this->getIdentity($user);
-        $identity->secret = (new Google2FA())->getCurrentOtp($identity->secret);
+        $identity->secret = getCurrentOtp($identity->secret);
 
         // Token mismatch? Let them try again...
         if (! $authenticator->checkAction($identity, $postedToken)) {

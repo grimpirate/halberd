@@ -16,9 +16,7 @@ use CodeIgniter\Shield\Exceptions\LogicException;
 use CodeIgniter\Shield\Exceptions\RuntimeException;
 use CodeIgniter\Shield\Models\UserIdentityModel;
 
-use GrimPirate\Halberd\Config\Halberd;
 use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
-use PragmaRX\Google2FA\Google2FA;
 
 class Register implements ActionInterface
 {
@@ -37,8 +35,7 @@ class Register implements ActionInterface
             throw new RuntimeException('Cannot get the pending login User.');
         }
 
-        //helper('qrcode');
-        $qrcode = qrcode((new Halberd())->issuer, $user->username, $this->createIdentity($user));
+        $qrcode = qrcode(config('Halberd')->issuer, $user->username, $this->createIdentity($user));
 
         // Display the info page
         return view(config('Halberd')->views['action_register'], ['user' => $user, 'qrcode' => $qrcode]);
@@ -74,14 +71,13 @@ class Register implements ActionInterface
 
         $identity = $this->getIdentity($user);
         $secret = $identity->secret;
-        $identity->secret = (new Google2FA())->getCurrentOtp($secret);
+        $identity->secret = getCurrentOtp($secret);
 
         // No match - let them try again.
         if (! $authenticator->checkAction($identity, $postedToken)) {
             session()->setFlashdata('error', lang('Auth.invalidActivateToken'));
 
-            //helper('qrcode');
-            $qrcode = qrcode((new Halberd())->issuer, $user->username, $secret);
+            $qrcode = qrcode(config('Halberd')->issuer, $user->username, $secret);
 
             return view(config('Halberd')->views['action_register'], ['user' => $user, 'qrcode' => $qrcode]);
         }
@@ -120,7 +116,7 @@ class Register implements ActionInterface
                 'name'  => 'register',
                 'extra' => lang('Auth.needVerification'),
             ],
-            static fn (): string => (new Google2FA())->generateSecretKey(),
+            'generateSecretKey',
             true
         );
     }

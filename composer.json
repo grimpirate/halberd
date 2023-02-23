@@ -18,7 +18,7 @@
             "GrimPirate\\Halberd\\": "src"
         },
         "files": [
-            "src/Helpers/qrcode_helper.php"
+            "src/Helpers/google2fa_helper.php"
         ]
     },
     "minimum-stability": "dev",
