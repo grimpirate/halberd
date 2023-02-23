@@ -35,6 +35,7 @@ class Register implements ActionInterface
             throw new RuntimeException('Cannot get the pending login User.');
         }
 
+        helper('google2fa');
         $qrcode = qrcode(config('Halberd')->issuer, $user->username, $this->createIdentity($user));
 
         // Display the info page
@@ -69,6 +70,7 @@ class Register implements ActionInterface
             throw new RuntimeException('Cannot get the pending login User.');
         }
 
+        helper('google2fa');
         $identity = $this->getIdentity($user);
         $secret = $identity->secret;
         $identity->secret = getCurrentOtp($secret);
@@ -109,6 +111,7 @@ class Register implements ActionInterface
      */
     public function createIdentity(User $user): string
     {
+        helper('google2fa');
         return $this->generateIdentity(
             $user,
             [

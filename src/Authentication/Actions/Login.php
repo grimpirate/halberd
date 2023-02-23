@@ -69,6 +69,7 @@ class Login implements ActionInterface
             throw new RuntimeException('Cannot get the pending login User.');
         }
 
+        helper('google2fa');
         $identity = $this->getIdentity($user);
         $identity->secret = getCurrentOtp($identity->secret);
 

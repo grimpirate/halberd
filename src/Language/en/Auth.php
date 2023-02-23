@@ -1,9 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
-namespace GrimPirate\Halberd\Language\en;
-
 return [
     // 2FA
     'title2FA'    => 'Two-Factor Authentication',

@@ -16,10 +16,7 @@
     "autoload": {
         "psr-4": {
             "GrimPirate\\Halberd\\": "src"
-        },
-        "files": [
-            "src/Helpers/google2fa_helper.php"
-        ]
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
