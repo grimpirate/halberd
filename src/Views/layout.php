@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title><?= lang('QRAuth.qrcode2FATitle') ?></title>
+    <title><?= lang('Auth.title2FA') ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94W>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
@@ -16,7 +16,7 @@
         <div class="container d-flex justify-content-center p-5">
             <div class="card col-12 col-md-5 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title mb-5"><?= lang('QRAuth.qrcode2FATitle') ?></h5>
+                    <h5 class="card-title mb-5"><?= lang('Auth.title2FA') ?></h5>
 
                 <?php if (session('error')) : ?>
                     <div class="alert alert-danger"><?= session('error') ?></div>

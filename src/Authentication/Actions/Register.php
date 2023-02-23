@@ -20,9 +20,9 @@ use GrimPirate\Halberd\Config\Halberd;
 use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
 use PragmaRX\Google2FA\Google2FA;
 
-class QRCodeActivator implements ActionInterface
+class Register implements ActionInterface
 {
-    private string $type = 'qrcode_activate';
+    private string $type = 'halberd_register';
 
     /**
      * Shows the initial screen to the user with a QR code for activation
@@ -41,7 +41,7 @@ class QRCodeActivator implements ActionInterface
         $qrcode = qrcode((new Halberd())->issuer, $user->username, $this->createIdentity($user));
 
         // Display the info page
-        return view(setting('Auth.views')['action_qrcode_activate_show'], ['user' => $user, 'qrcode' => $qrcode]);
+        return view(config('Halberd')->views['action_register'], ['user' => $user, 'qrcode' => $qrcode]);
     }
 
     /**
@@ -83,7 +83,7 @@ class QRCodeActivator implements ActionInterface
             //helper('qrcode');
             $qrcode = qrcode((new Halberd())->issuer, $user->username, $secret);
 
-            return view(setting('Auth.views')['action_qrcode_activate_show'], ['user' => $user, 'qrcode' => $qrcode]);
+            return view(config('Halberd')->views['action_register'], ['user' => $user, 'qrcode' => $qrcode]);
         }
 
         $user = $authenticator->getUser();
@@ -118,7 +118,7 @@ class QRCodeActivator implements ActionInterface
             [
                 'type'  => $this->type,
                 'name'  => 'register',
-                'extra' => lang('QRAuth.needVerification'),
+                'extra' => lang('Auth.needVerification'),
             ],
             static fn (): string => (new Google2FA())->generateSecretKey(),
             true

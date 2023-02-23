@@ -17,13 +17,13 @@ use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
 use PragmaRX\Google2FA\Google2FA;
 
 /**
- * Class QRCode2FA
+ * Class Login
  *
  * One Time Password code to verify their account.
  */
-class QRCode2FA implements ActionInterface
+class Login implements ActionInterface
 {
-    private string $type = 'qrcode_2fa';
+    private string $type = 'halberd_login';
 
     /**
      * Displays verification prompt.
@@ -40,7 +40,7 @@ class QRCode2FA implements ActionInterface
 
         $this->createIdentity($user);
 
-        return view(setting('Auth.views')['action_qrcode_2fa_verify']);
+        return view(config('Halberd')->views['action_login']);
     }
 
     /**
@@ -77,7 +77,7 @@ class QRCode2FA implements ActionInterface
         if (! $authenticator->checkAction($identity, $postedToken)) {
             session()->setFlashdata('error', lang('Auth.invalid2FAToken'));
 
-            return view(setting('Auth.views')['action_qrcode_2fa_verify']);
+            return view(config('Halberd')->views['action_login']);
         }
 
         // Get our login redirect url

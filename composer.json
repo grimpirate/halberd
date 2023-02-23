@@ -10,10 +10,8 @@
         "bacon/bacon-qr-code": "^2.0.7"
     },
     "keywords": [
-        "codeigniter",
         "codeigniter4",
-        "authentication",
-        "authorization"
+        "authentication"
     ],
     "autoload": {
         "psr-4": {
@@ -23,5 +21,6 @@
             "src/Helpers/qrcode_helper.php"
         ]
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
