@@ -1,9 +1,9 @@
 # halberd
 A CodeIgniter Google Two-Factor Authentication Module for Shield
 ## Prerequisites
-Assumes *codeigniter4/shield:dev-develop* has been preinstalled by composer
+Project should have a stability level of dev
 ```
-composer require codeigniter4/shield:dev-develop
+composer config minimum-stability dev
 ```
 ## Installation (composer)
 ```
