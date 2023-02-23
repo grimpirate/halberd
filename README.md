@@ -7,7 +7,7 @@ composer config minimum-stability dev
 ```
 ## Installation (composer)
 ```
-composer require grimpirate/halberd:dev-main
+composer require grimpirate/halberd:dev-develop
 ```
 ## Configuration
 In the application's *.env* file *halberd.issuer* denotes the string that will appear on the Google Authenticator app as follows: ISSUER(username)
