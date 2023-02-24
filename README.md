@@ -1,11 +1,11 @@
-# halberd
+# Halberd
 A CodeIgniter Google Two-Factor Authentication Module for Shield
 ## Prerequisites
 Project should have a stability level of dev
 ```
 composer config minimum-stability dev
 ```
-## Installation (composer)
+## Installation
 ```
 composer require grimpirate/halberd:dev-develop
 ```
