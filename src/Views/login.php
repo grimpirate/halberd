@@ -2,6 +2,6 @@
 
 <?= $this->section('main') ?>
 
-            <p><?= lang('Auth.confirmCode') ?></p>
+            <p><?= lang('Halberd.confirmCode') ?></p>
 
 <?= $this->endSection() ?>

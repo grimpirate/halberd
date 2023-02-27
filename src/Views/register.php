@@ -2,7 +2,7 @@
 
 <?= $this->section('main') ?>
 
-            <p><?= lang('Auth.googleApp') ?></p>
+            <p><?= lang('Halberd.googleApp') ?></p>
 
             <p><?= $qrcode ?></p>
 

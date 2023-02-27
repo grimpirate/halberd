@@ -117,7 +117,7 @@ class Register implements ActionInterface
             [
                 'type'  => $this->type,
                 'name'  => 'register',
-                'extra' => lang('Auth.needVerification'),
+                'extra' => lang('Halberd.needVerification'),
             ],
             'generateSecretKey',
             true

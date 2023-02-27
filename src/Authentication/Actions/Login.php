@@ -94,13 +94,16 @@ class Login implements ActionInterface
         /** @var UserIdentityModel $identityModel */
         $identityModel = model(UserIdentityModel::class);
 
+        // Delete any previous identities for action
+        $identityModel->deleteIdentitiesByType($user, $this->type);
+
         $secret = $identityModel->getIdentityByType(
             $user,
             'google_2fa'
-        )->secret;
-
-        // Delete any previous identities for action
-        $identityModel->deleteIdentitiesByType($user, $this->type);
+        ) ?? $identityModel->getIdentityByType(
+            $user,
+            'halberd_register'
+        );
 
         return $identityModel->createCodeIdentity(
             $user,
@@ -109,7 +112,7 @@ class Login implements ActionInterface
                 'name'  => 'login',
                 'extra' => lang('Auth.need2FA'),
             ],
-            static fn (): string => $secret
+            static fn (): string => $secret->secret
         );
     }
 
