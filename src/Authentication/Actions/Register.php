@@ -93,7 +93,6 @@ class Register implements ActionInterface
             $user,
             [
                 'type'  => 'google_2fa',
-                'name'  => 'activated'
             ],
             static fn (): string => $secret,
             false
