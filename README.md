@@ -9,7 +9,7 @@ composer require grimpirate/halberd:dev-develop
 ```
 ## Configuration
 1. Copy the configuration file from **vendor/grimpirate/halberd/app/Config/TOTP.php** to your project's **app/Config/** directory
-2. The register/login actions and the TOTP authenticator class must be added to the Config/Auth file
+2. The register/login actions and the TOTP authenticator class must be added to the **app/Config/Auth.php** file
 ```
 ...
 
