@@ -22,9 +22,6 @@ class TOTPActivator implements ActionInterface
 {
     use Viewable;
 
-    public const ISSUER = 'Halberd';
-    public const VIEW = '\GrimPirate\Halberd\Authentication\Actions\TOTPActivator';
-
     private string $type = TOTP::ID_TYPE_TOTP_2FA;
 
     /**
@@ -42,7 +39,7 @@ class TOTPActivator implements ActionInterface
 
         $identity = $this->getIdentity($user);
 
-        return view(service('settings')->get('TOTP.view') ?? VIEW, $user->isNotActivated() ? ['qrcode' => service('halberd')->svg($identity->secret2), 'secret' => $identity->secret] : []);
+        return view(service('settings')->get('TOTP.view'), $user->isNotActivated() ? ['qrcode' => service('halberd')->svg($identity->secret2), 'secret' => $identity->secret] : []);
     }
 
     /**
@@ -80,7 +77,7 @@ class TOTPActivator implements ActionInterface
         {
             session()->setFlashdata('error', lang($user->isNotActivated() ? 'Auth.invalidActivateToken' : 'Auth.invalid2FAToken'));
 
-            return view(service('settings')->get('TOTP.view') ?? VIEW, $user->isNotActivated() ? ['qrcode' => service('halberd')->svg($identity->secret2), 'secret' => $identity->secret] : []);
+            return view(service('settings')->get('TOTP.view'), $user->isNotActivated() ? ['qrcode' => service('halberd')->svg($identity->secret2), 'secret' => $identity->secret] : []);
         }
 
         // getUser instead of getPendingUser updates user state to LOGGED_IN
@@ -122,7 +119,7 @@ class TOTPActivator implements ActionInterface
                 $user,
                 [
                     'type'  => $this->type,
-                    'secret2' => $halberd->qrcode(service('settings')->get('TOTP.issuer') ?? ISSUER, $user->username ?? $user->email, $secret),
+                    'secret2' => $halberd->qrcode(service('settings')->get('TOTP.issuer'), $user->username ?? $user->email, $secret),
                     'last_used_at' => Time::yesterday(),
                 ],
                 static fn (): string => $secret

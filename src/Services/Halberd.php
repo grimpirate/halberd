@@ -15,15 +15,13 @@ use GrimPirate\Halberd\Authentication\Authenticators\TOTP;
 
 class Halberd
 {
-	public const SECRET_KEY_LENGTH = 16;
-
 	public function __construct(protected Google2FA $google2fa = new Google2FA())
 	{
 	}
 
 	public function generateSecretKey()
 	{
-		return $this->google2fa->generateSecretKey(service('settings')->get('TOTP.secretKeyLength') ?? SECRET_KEY_LENGTH);
+		return $this->google2fa->generateSecretKey(service('settings')->get('TOTP.secretKeyLength'));
 	}
 
 	public function verifyKeyNewer($secret, $code, $timestamp)
