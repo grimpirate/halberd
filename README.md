@@ -9,7 +9,8 @@ composer require grimpirate/halberd:dev-develop
 ```
 ## Configuration
 1. Copy the configuration file from **vendor/grimpirate/halberd/app/Config/TOTP.php** to your project's **app/Config/** directory
-2. The register/login actions and the TOTP authenticator class must be added to the **app/Config/Auth.php** file
+2. Copy the stylesheet from **vendor/grimpirate/halberd/public/css/totp.css** to your project's **app/public/css/** directory
+3. The register/login actions and the TOTP authenticator class must be added to the **app/Config/Auth.php** file
 ```
 ...
 
@@ -34,13 +35,3 @@ class Auth extends BaseConfig
 ```
 ## Dependencies
 The dependency [pragmarx/google2fa](https://github.com/antonioribeiro/google2fa?tab=readme-ov-file#server-time) requires that your server time be accurately synchronized (via NTP or some other means). CodeIgniter's [appTimezone](https://github.com/codeigniter4/CodeIgniter4/blob/655bd1de0c460b0e1353d2ead8ecff956ac08ccc/app/Config/App.php#L136) will not affect OTP generation.
-## Styles
-The QR Code will not be visible without creating a stylesheet and applying some basic styles, for instance
-```
-svg
-{
-  width: 100%;
-  height: 240px;
-  fill-rule: evenodd;
-}
-```
