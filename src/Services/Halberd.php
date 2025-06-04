@@ -15,11 +15,8 @@ use GrimPirate\Halberd\Authentication\Authenticators\TOTP;
 
 class Halberd
 {
-	protected Google2FA $google2fa;
-
-	public function __construct()
+	public function __construct(protected Google2FA $google2fa = new Google2FA())
 	{
-		$this->google2fa = new Google2FA();
 	}
 
 	public function generateSecretKey()
