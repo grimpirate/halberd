@@ -21,7 +21,10 @@ helper('form');
 <?php endif ?>
 
 <?php if(isset($qrcode)): ?>
-    <p><?= lang('TOTP.googleApp') ?></p>
+    <p><?= lang('TOTP.googleApp', [
+        'android' => lang('TOTP.android'),
+        'ios' => lang('TOTP.ios'),
+    ]) ?></p>
 
     <p><?= $qrcode ?></p>
 
