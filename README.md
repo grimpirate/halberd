@@ -20,7 +20,7 @@ class Auth extends BaseConfig
 
   public array $views = [
     ...
-    'action_totp_2fa' => '\GrimPirate\Halberd\Views\totp_2fa_show',
+    'action_totp_2fa'             => '\GrimPirate\Halberd\Views\totp_2fa_show',
   ];
 
   ...
