@@ -21,7 +21,7 @@ class Halberd
 
 	public function generateSecretKey()
 	{
-		return $this->google2fa->generateSecretKey(service('settings')->get('TOTP.secretKeyLength'));
+		return $this->google2fa->generateSecretKey(setting('TOTP.secretKeyLength'));
 	}
 
 	public function verifyKeyNewer($secret, $code, $timestamp)
@@ -67,7 +67,7 @@ class Halberd
 	{
 		$user = auth()->getProvider()->findById($id);
 
-		$actionClass = service('settings')->get('Auth.actions')['register'];
+		$actionClass = setting('Auth.actions')['register'];
 
 		$action = Factories::actions($actionClass);
 
