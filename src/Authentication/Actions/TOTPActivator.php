@@ -39,7 +39,7 @@ class TOTPActivator implements ActionInterface
 
         $identity = $this->getIdentity($user);
 
-        return view(service('settings')->get('TOTP.view'), $user->isNotActivated() ? ['qrcode' => service('halberd')->svg($identity->secret2), 'secret' => $identity->secret] : []);
+        return view(service('settings')->get('Auth.views')['action_totp_2fa'], $user->isNotActivated() ? ['qrcode' => service('halberd')->svg($identity->secret2), 'secret' => $identity->secret] : []);
     }
 
     /**
@@ -77,7 +77,7 @@ class TOTPActivator implements ActionInterface
         {
             session()->setFlashdata('error', lang($user->isNotActivated() ? 'Auth.invalidActivateToken' : 'Auth.invalid2FAToken'));
 
-            return view(service('settings')->get('TOTP.view'), $user->isNotActivated() ? ['qrcode' => service('halberd')->svg($identity->secret2), 'secret' => $identity->secret] : []);
+            return view(service('settings')->get('Auth.views')['action_totp_2fa'], $user->isNotActivated() ? ['qrcode' => service('halberd')->svg($identity->secret2), 'secret' => $identity->secret] : []);
         }
 
         // getUser instead of getPendingUser updates user state to LOGGED_IN

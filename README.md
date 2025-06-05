@@ -10,12 +10,18 @@ composer require grimpirate/halberd:dev-develop
 ## Configuration
 1. Copy the configuration file from **vendor/grimpirate/halberd/app/Config/TOTP.php** to your project's **app/Config/** directory
 2. Copy the stylesheet from **vendor/grimpirate/halberd/public/css/totp.css** to your project's **app/public/css/** directory
-3. The register/login actions and the TOTP authenticator class must be added to the **app/Config/Auth.php** file
+3. The view, register/login actions and the TOTP authenticator class must be added to the **app/Config/Auth.php** file
 ```
 ...
 
 class Auth extends BaseConfig
 {
+  ...
+
+  public array $views = [
+    ...
+    'action_totp_2fa' => '\GrimPirate\Halberd\Views\totp_2fa_show',
+  ];
 
   ...
 
