@@ -7,10 +7,6 @@ use CodeIgniter\CLI\CLI;
 use CodeIgniter\CLI\Commands;
 use Psr\Log\LoggerInterface;
 
-use CodeIgniter\Config\Factories;
-use CodeIgniter\Shield\Models\UserIdentityModel;
-use GrimPirate\Halberd\Authentication\Authenticators\TOTP as OTP;
-
 class TOTP extends BaseCommand
 {
     protected $group =          'Halberd';
