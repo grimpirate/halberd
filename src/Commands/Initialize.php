@@ -28,28 +28,6 @@ class Initialize extends BaseCommand
 	{
 		$this->merge('app', 'Config');
 		$this->merge('public', 'css');
-
-		$publisher = new Publisher();
-
-		$publisher->addLineAfter(
-			APPPATH . 'Config/Auth.php',
-			"        'action_totp_2fa'             => '\\GrimPirate\\Halberd\\Views\\totp_2fa_show',",
-			'public array $views = [',
-		);
-
-		$publisher->replace(
-			APPPATH . 'Config/Auth.php',
-			[
-				"'login'    => null," => "'login'    => \\GrimPirate\\Halberd\\Authentication\\Actions\\TOTPActivator::class,",
-				"'register' => null," => "'register' => \\GrimPirate\\Halberd\\Authentication\\Actions\\TOTPActivator::class,",
-			],
-		);
-
-		$publisher->addLineAfter(
-			APPPATH . 'Config/Auth.php',
-			"        'totp'    => \\GrimPirate\\Halberd\\Authentication\\Authenticators\\TOTP::class,",
-			'public array $authenticators = [',
-		);
 	}
 
 	private function merge($path, $sub)
