@@ -14,16 +14,8 @@ return [
     // Spark commands
     'spark' => [
         'initialize' => [
-            'input' => [
-                'issuer' => 'Issuer?',
-                'stylesheet' => 'CSS?',
-            ],
             'description' => 'Initializes configuration parameters for Halberd.',
-            'usage' => 'halberd:ini <issuer> <css>',
-            'arguments' => [
-                'issuer' => 'The One-Time Password (OTP) issuer',
-                'stylesheet' => 'CSS stylesheet location for activation/authentication forms',
-            ],
+            'usage' => 'halberd:ini',
         ],
         'totp' => [
             'input' => [

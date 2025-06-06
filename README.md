@@ -7,7 +7,11 @@ composer config minimum-stability dev
 composer config prefer-stable true
 composer require grimpirate/halberd:dev-develop
 ```
-## Configuration
+## CLI Configuration
+```
+php spark halberd:ini
+```
+## Manual Configuration
 1. Copy the configuration file from **vendor/grimpirate/halberd/app/Config/TOTP.php** to your project's **app/Config/** directory
 2. Copy the stylesheet from **vendor/grimpirate/halberd/public/css/totp.css** to your project's **app/public/css/** directory
 3. The view, register/login actions and the TOTP authenticator class must be added to the **app/Config/Auth.php** file
@@ -19,22 +23,22 @@ class Auth extends BaseConfig
   ...
 
   public array $views = [
-    ...
     'action_totp_2fa'             => '\GrimPirate\Halberd\Views\totp_2fa_show',
+    ...
   ];
 
   ...
 
   public array $actions = [
-    'register' => '\GrimPirate\Halberd\Authentication\Actions\TOTPActivator',
-    'login'    => '\GrimPirate\Halberd\Authentication\Actions\TOTPActivator',
+    'register' => \GrimPirate\Halberd\Authentication\Actions\TOTPActivator::class,
+    'login'    => \GrimPirate\Halberd\Authentication\Actions\TOTPActivator::class,
   ];
 
   ...
 
   public array $authenticators = [
-    ...
     'totp'    => \GrimPirate\Halberd\Authentication\Authenticators\TOTP::class,
+    ...
   ];
 
   ...
