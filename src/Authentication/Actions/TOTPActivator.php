@@ -63,7 +63,7 @@ class TOTPActivator implements ActionInterface
         /** @var TOTP $authenticator */
         $authenticator = auth('totp')->getAuthenticator();
 
-        $postedToken = $request->getVar('token');
+        $postedToken = $request->getPost('token');
 
         $user = $authenticator->getPendingUser();
         
