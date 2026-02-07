@@ -11,8 +11,10 @@ composer require grimpirate/halberd:dev-develop
 ```
 php spark halberd:ini
 ```
-The initialization will silently fail to copy any of the files listed in the *Configuration - Manual method* section if they are already present in the **app/Config/** directory
 ## Configuration - Manual method
 Copy/merge the registrar file from **vendor/grimpirate/halberd/app/Config/Registrar.php** to your project's **app/Config/** directory
-## Dependencies
-The dependency [pragmarx/google2fa](https://github.com/antonioribeiro/google2fa?tab=readme-ov-file#server-time) requires that your server time be accurately synchronized (via NTP or some other means). CodeIgniter's [appTimezone](https://github.com/codeigniter4/CodeIgniter4/blob/655bd1de0c460b0e1353d2ead8ecff956ac08ccc/app/Config/App.php#L136) will not affect OTP generation.
+## Remarks
+1. `php spark halberd:ini` will silently fail to copy Registrar.php to **app/Config/** if it already exists in the  directory.
+2. The dependency [pragmarx/google2fa](https://github.com/antonioribeiro/google2fa?tab=readme-ov-file#server-time) requires that your server time be accurately synchronized (via NTP or some other means).
+3. CodeIgniter's [appTimezone](https://github.com/codeigniter4/CodeIgniter4/blob/655bd1de0c460b0e1353d2ead8ecff956ac08ccc/app/Config/App.php#L136) will not affect OTP generation.
+4. Requires php [xmlwriter](https://www.php.net/manual/en/book.xmlwriter.php) extension.
