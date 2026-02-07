@@ -27,7 +27,6 @@ class Initialize extends BaseCommand
 	public function run(array $params)
 	{
 		$this->merge('app', 'Config');
-		$this->merge('public', 'css');
 	}
 
 	private function merge($path, $sub)

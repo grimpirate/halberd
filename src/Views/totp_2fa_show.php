@@ -10,7 +10,14 @@ helper('form');
 
     <title><?= lang('TOTP.title2FA') ?></title>
 
-    <?= link_tag(setting('TOTP.stylesheet')) ?>
+    <style>
+        svg
+        {
+            width: 100%;
+            height: 240px;
+            fill-rule: evenodd;
+        }
+    </style>
 </head>
 
 <body>

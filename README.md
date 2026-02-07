@@ -13,8 +13,6 @@ php spark halberd:ini
 ```
 The initialization will silently fail to copy any of the files listed in the *Configuration - Manual method* section if they are already present in the **app/Config/** directory
 ## Configuration - Manual method
-1. Copy the configuration file from **vendor/grimpirate/halberd/app/Config/TOTP.php** to your project's **app/Config/** directory
-2. Copy/merge the registrar file from **vendor/grimpirate/halberd/app/Config/Registrar.php** to your project's **app/Config/** directory
-3. Copy the stylesheet from **vendor/grimpirate/halberd/public/css/totp.css** to your project's **app/public/css/** directory
+Copy/merge the registrar file from **vendor/grimpirate/halberd/app/Config/Registrar.php** to your project's **app/Config/** directory
 ## Dependencies
 The dependency [pragmarx/google2fa](https://github.com/antonioribeiro/google2fa?tab=readme-ov-file#server-time) requires that your server time be accurately synchronized (via NTP or some other means). CodeIgniter's [appTimezone](https://github.com/codeigniter4/CodeIgniter4/blob/655bd1de0c460b0e1353d2ead8ecff956ac08ccc/app/Config/App.php#L136) will not affect OTP generation.
