@@ -1,6 +1,6 @@
 <?php
 
-namespace Grimpirate\Halberd\Config;
+namespace GrimPirate\Halberd\Config;
 
 class Registrar
 {
