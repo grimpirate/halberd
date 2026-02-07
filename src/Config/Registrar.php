@@ -11,7 +11,7 @@ class Registrar
                 'action_totp_2fa' => '\GrimPirate\Halberd\Views\totp_2fa_show',
             ],
             'authenticators' => [
-                'totp' => \GrimPirate\Halberd\Authentication\Authenticators\TOTP::class,
+                'totp' => \GrimPirate\Halberd\Authentication\Authenticators\Totp::class,
             ],
         ];
     }

@@ -8,8 +8,8 @@ class Registrar
     {
         return [
             'actions' => [
-                'register' => \GrimPirate\Halberd\Authentication\Actions\TOTPActivator::class,
-                'login'    => \GrimPirate\Halberd\Authentication\Actions\TOTPActivator::class,
+                'register' => \GrimPirate\Halberd\Authentication\Actions\TotpActivator::class,
+                'login'    => \GrimPirate\Halberd\Authentication\Actions\TotpActivator::class,
             ],
         ];
     }

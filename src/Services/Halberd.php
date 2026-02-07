@@ -11,7 +11,7 @@ use PragmaRX\Google2FA\Google2FA;
 
 use CodeIgniter\Config\Factories;
 use CodeIgniter\Shield\Models\UserIdentityModel;
-use GrimPirate\Halberd\Authentication\Authenticators\TOTP;
+use GrimPirate\Halberd\Authentication\Authenticators\Totp;
 
 class Halberd
 {
@@ -21,7 +21,7 @@ class Halberd
 
 	public function generateSecretKey()
 	{
-		return $this->google2fa->generateSecretKey(setting('TOTP.secretKeyLength'));
+		return $this->google2fa->generateSecretKey(setting('Totp.secretKeyLength'));
 	}
 
 	public function verifyKeyNewer($secret, $code, $timestamp)
@@ -73,7 +73,7 @@ class Halberd
 
 		$identityModel = model(UserIdentityModel::class);
 
-		$identityModel->deleteIdentitiesByType($user, TOTP::ID_TYPE_TOTP_2FA);
+		$identityModel->deleteIdentitiesByType($user, Totp::ID_TYPE_TOTP_2FA);
 
 		$action->createIdentity($user);
 

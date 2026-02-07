@@ -8,7 +8,7 @@ helper('form');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title><?= lang('TOTP.title2FA') ?></title>
+    <title><?= lang('Totp.title2FA') ?></title>
 
     <style>
         svg
@@ -21,23 +21,23 @@ helper('form');
 </head>
 
 <body>
-    <h1><?= lang('TOTP.title2FA') ?></h1>
+    <h1><?= lang('Totp.title2FA') ?></h1>
 
 <?php if (session('error')) : ?>
     <p><?= session('error') ?></p>
 <?php endif ?>
 
 <?php if(isset($qrcode)): ?>
-    <p><?= lang('TOTP.googleApp', [
-        'android' => lang('TOTP.android'),
-        'ios' => lang('TOTP.ios'),
+    <p><?= lang('Totp.googleApp', [
+        'android' => lang('Totp.android'),
+        'ios' => lang('Totp.ios'),
     ]) ?></p>
 
     <p><?= $qrcode ?></p>
 
-    <p><?= lang('TOTP.problems', ['placeholder' => $secret]) ?></p>
+    <p><?= lang('Totp.problems', ['placeholder' => $secret]) ?></p>
 <?php else: ?>
-    <p><?= lang('TOTP.confirmCode') ?></p>
+    <p><?= lang('Totp.confirmCode') ?></p>
 <?php endif ?>
 
     <?= form_open(url_to('auth-action-verify')) ?>

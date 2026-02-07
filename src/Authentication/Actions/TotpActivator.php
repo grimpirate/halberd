@@ -9,7 +9,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\Response;
 use CodeIgniter\I18n\Time;
-use GrimPirate\Halberd\Authentication\Authenticators\TOTP;
+use GrimPirate\Halberd\Authentication\Authenticators\Totp;
 use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Entities\UserIdentity;
 use CodeIgniter\Shield\Exceptions\RuntimeException;
@@ -18,18 +18,18 @@ use CodeIgniter\Shield\Traits\Viewable;
 
 use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
 
-class TOTPActivator implements ActionInterface
+class TotpActivator implements ActionInterface
 {
     use Viewable;
 
-    private string $type = TOTP::ID_TYPE_TOTP_2FA;
+    private string $type = Totp::ID_TYPE_TOTP_2FA;
 
     /**
      * Shows the initial screen to the user with a QR code for activation
      */
     public function show(): string
     {
-        /** @var TOTP $authenticator */
+        /** @var Totp $authenticator */
         $authenticator = auth('totp')->getAuthenticator();
 
         $user = $authenticator->getPendingUser();
@@ -60,7 +60,7 @@ class TOTPActivator implements ActionInterface
      */
     public function verify(IncomingRequest $request)
     {
-        /** @var TOTP $authenticator */
+        /** @var Totp $authenticator */
         $authenticator = auth('totp')->getAuthenticator();
 
         $postedToken = $request->getPost('token');
@@ -119,7 +119,7 @@ class TOTPActivator implements ActionInterface
                 $user,
                 [
                     'type'  => $this->type,
-                    'secret2' => $halberd->qrcode(setting('TOTP.issuer'), $user->username ?? $user->email, $secret),
+                    'secret2' => $halberd->qrcode(setting('Totp.issuer'), $user->username ?? $user->email, $secret),
                     'last_used_at' => Time::yesterday(),
                 ],
                 static fn (): string => $secret

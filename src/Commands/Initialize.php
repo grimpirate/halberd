@@ -18,8 +18,8 @@ class Initialize extends BaseCommand
 	public function __construct(LoggerInterface $logger, Commands $commands)
 	{
 		parent::__construct($logger, $commands);
-		$this->description   = lang('TOTP.spark.initialize.description');
-		$this->usage = lang('TOTP.spark.initialize.usage');
+		$this->description   = lang('Totp.spark.initialize.description');
+		$this->usage = lang('Totp.spark.initialize.usage');
 
 		$this->vendorPath = service('autoloader')->getNamespace('GrimPirate\Halberd')[0] . '../';
 	}
@@ -27,6 +27,7 @@ class Initialize extends BaseCommand
 	public function run(array $params)
 	{
 		$this->merge('app', 'Config');
+
 	}
 
 	private function merge($path, $sub)

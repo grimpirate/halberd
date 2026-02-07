@@ -13,7 +13,7 @@ use CodeIgniter\Shield\Exceptions\LogicException;
 use CodeIgniter\Shield\Models\UserIdentityModel;
 use CodeIgniter\Shield\Models\UserModel;
 
-class TOTP extends Session
+class Totp extends Session
 {
     // Identity types
     public const ID_TYPE_TOTP_2FA = 'totp_2fa';
