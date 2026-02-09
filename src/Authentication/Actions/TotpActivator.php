@@ -6,22 +6,17 @@ namespace GrimPirate\Halberd\Authentication\Actions;
 
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\HTTP\IncomingRequest;
-use CodeIgniter\HTTP\RedirectResponse;
-use CodeIgniter\HTTP\Response;
 use CodeIgniter\I18n\Time;
 use GrimPirate\Halberd\Authentication\Authenticators\Totp;
 use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Entities\UserIdentity;
 use CodeIgniter\Shield\Exceptions\RuntimeException;
 use CodeIgniter\Shield\Models\UserIdentityModel;
-use CodeIgniter\Shield\Traits\Viewable;
 
 use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
 
 class TotpActivator implements ActionInterface
 {
-    use Viewable;
-
     private string $type = Totp::ID_TYPE_TOTP_2FA;
 
     /**
