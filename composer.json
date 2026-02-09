@@ -4,12 +4,12 @@
     "license": "MIT",
     "homepage": "https://github.com/grimpirate/halberd",
     "require": {
-        "php": "^7.4.3 || ^8.0",
+        "php": "^8.2",
         "ext-xmlwriter": "*",
-        "codeigniter4/settings": "^2.1",
+        "codeigniter4/settings": "^2.2",
         "codeigniter4/shield": "dev-develop",
-        "pragmarx/google2fa": "^8.0.0",
-        "bacon/bacon-qr-code": "^2.0.7"
+        "pragmarx/google2fa": "^9.0",
+        "bacon/bacon-qr-code": "^3.0"
     },
     "keywords": [
         "codeigniter4",
