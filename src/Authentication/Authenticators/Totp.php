@@ -6,12 +6,8 @@ namespace GrimPirate\Halberd\Authentication\Authenticators;
 
 use CodeIgniter\Shield\Authentication\Authenticators\Session;
 
-use CodeIgniter\I18n\Time;
-use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Entities\UserIdentity;
 use CodeIgniter\Shield\Exceptions\LogicException;
-use CodeIgniter\Shield\Models\UserIdentityModel;
-use CodeIgniter\Shield\Models\UserModel;
 
 class Totp extends Session
 {
@@ -44,3 +40,4 @@ class Totp extends Session
         return true;
     }
 }
+
