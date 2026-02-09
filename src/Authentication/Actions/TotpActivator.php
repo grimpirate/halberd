@@ -114,7 +114,7 @@ class TotpActivator implements ActionInterface
                 $user,
                 [
                     'type'  => $this->type,
-                    'secret2' => $halberd->qrcode(setting('Totp.issuer'), $user->username ?? $user->email, $secret),
+                    'secret2' => $halberd->qrcode($user->username ?? $user->email, $secret),
                     'last_used_at' => Time::yesterday(),
                 ],
                 static fn (): string => $secret

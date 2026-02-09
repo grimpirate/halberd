@@ -31,10 +31,10 @@ class Halberd
 
 	public function svg($path)
 	{
-		return '<svg version="1.1" viewBox="-4 -4 45 45"><path d="' . gzuncompress(base64_decode($path)) . '" /></svg>';
+		return '<svg viewBox="-4 -4 45 45"><path d="' . gzuncompress(base64_decode($path)) . '" /></svg>';
 	}
 
-	public function qrcode($issuer, $accountname, $secret)
+	public function qrcode($accountname, $secret)
 	{
 		$writer = new Writer(new ImageRenderer(
 			new RendererStyle(120),
@@ -44,7 +44,7 @@ class Halberd
 		$path = preg_replace(
 			'/^.*d="([^"]+).*$/s',	// Leave only path data
 			'$1',
-			$writer->writeString($this->google2fa->getQRCodeUrl($issuer, $accountname, $secret)));
+			$writer->writeString($this->google2fa->getQRCodeUrl(setting('Totp.issuer'), $accountname, $secret)));
 
 		// Optimize path data
 		$path = preg_split('/([MLZ]+)/', $path, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
