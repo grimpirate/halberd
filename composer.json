@@ -21,5 +21,13 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "scripts": {
+        "post-update-cmd": [
+            "rm -rf vendor/grimpirate/halberd/.github",
+            "rm -rf vendor/grimpirate/halberd/docs",
+            "rm -rf vendor/grimpirate/halberd/zensical.toml",
+            "rm -rf vendor/grimpirate/halberd/LICENSE"
+        ]
+    }
 }
