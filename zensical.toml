@@ -319,5 +319,5 @@ logo = "lucide/flame"
 icon = "fontawesome/brands/github"
 link = "https://github.com/grimpirate"
 
-[project.extra]
-generator = false
+#[project.extra]
+#generator = false
