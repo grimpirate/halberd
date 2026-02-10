@@ -24,7 +24,8 @@
     "prefer-stable": true,
     "scripts": {
         "post-update-cmd": [
-            "rm -rvf ./.github ./docs ./zensical.toml ./LICENSE"
+            "rm -rvf ./.github ./docs ./zensical.toml ./LICENSE",
+            "echo 'This is being executed'"
         ]
     }
 }
