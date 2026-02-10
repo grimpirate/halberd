@@ -49,6 +49,7 @@ helper('form');
             'pattern' => '[0-9]{6}',
             'autocomplete' => 'one-time-code',
             'required' => true,
+            'autofocus' => true,
         ]) ?>
         <?= form_submit('', lang('Auth.confirm')) ?>
     <?= form_close() ?>
