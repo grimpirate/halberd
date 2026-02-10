@@ -29,11 +29,6 @@ class Halberd
 		return false !== $this->google2fa->verifyKeyNewer($secret, $code, floor($timestamp / $this->google2fa->getKeyRegeneration()));
 	}
 
-	public function svg($path)
-	{
-		return '<svg viewBox="-4 -4 45 45"><path d="' . gzuncompress(base64_decode($path)) . '" /></svg>';
-	}
-
 	public function qrcode($accountname, $secret)
 	{
 		$writer = new Writer(new ImageRenderer(
@@ -60,7 +55,7 @@ class Halberd
 			$prevCoord = $currCoord;
 		}
 
-		return base64_encode(gzcompress(implode('', $path), 9));
+		return '<svg viewBox="-4 -4 45 45"><path d="' . implode('', $path) . '" /></svg>';
 	}
 
 	public function regenerateIdentity($id)

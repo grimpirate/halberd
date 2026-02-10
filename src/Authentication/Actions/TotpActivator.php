@@ -7,11 +7,12 @@ namespace GrimPirate\Halberd\Authentication\Actions;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\I18n\Time;
-use GrimPirate\Halberd\Authentication\Authenticators\Totp;
 use CodeIgniter\Shield\Entities\User;
-use CodeIgniter\Shield\Entities\UserIdentity;
 use CodeIgniter\Shield\Exceptions\RuntimeException;
-use CodeIgniter\Shield\Models\UserIdentityModel;
+
+use GrimPirate\Halberd\Authentication\Authenticators\Totp;
+use GrimPirate\Halberd\Entities\UserIdentity;
+use GrimPirate\Halberd\Models\UserIdentityModel;
 
 use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
 
@@ -34,7 +35,7 @@ class TotpActivator implements ActionInterface
 
         $identity = $this->getIdentity($user);
 
-        return view(setting('Auth.views')['action_totp_2fa'], $user->isNotActivated() ? ['qrcode' => service('halberd')->svg($identity->secret2), 'secret' => $identity->secret] : []);
+        return view(setting('Auth.views')['action_totp_2fa'], $user->isNotActivated() ? ['qrcode' => $identity->qrcode, 'secret' => $identity->secret] : []);
     }
 
     /**
@@ -72,7 +73,7 @@ class TotpActivator implements ActionInterface
         {
             session()->setFlashdata('error', lang($user->isNotActivated() ? 'Auth.invalidActivateToken' : 'Auth.invalid2FAToken'));
 
-            return view(setting('Auth.views')['action_totp_2fa'], $user->isNotActivated() ? ['qrcode' => service('halberd')->svg($identity->secret2), 'secret' => $identity->secret] : []);
+            return view(setting('Auth.views')['action_totp_2fa'], $user->isNotActivated() ? ['qrcode' => $identity->qrcode, 'secret' => $identity->secret] : []);
         }
 
         // getUser instead of getPendingUser updates user state to LOGGED_IN
@@ -105,19 +106,15 @@ class TotpActivator implements ActionInterface
             $this->type
         );
 
-        $halberd = service('halberd');
-        $secret = $halberd->generateSecretKey();
-
         return null !== $identity
             ? $identity->secret
             : $identityModel->createCodeIdentity(
                 $user,
                 [
                     'type'  => $this->type,
-                    'secret2' => $halberd->qrcode($user->username ?? $user->email, $secret),
                     'last_used_at' => Time::yesterday(),
                 ],
-                static fn (): string => $secret
+                static fn (): string => service('halberd')->generateSecretKey()
             );
     }
 
