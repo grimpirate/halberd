@@ -112,6 +112,7 @@ class TotpActivator implements ActionInterface
                 $user,
                 [
                     'type'  => $this->type,
+                    'secret2' => $user->username ?? $user->email,
                     'last_used_at' => Time::yesterday(),
                 ],
                 static fn (): string => service('halberd')->generateSecretKey()

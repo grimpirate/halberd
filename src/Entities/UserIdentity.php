@@ -8,6 +8,6 @@ class UserIdentity extends ShieldUserIdentity
 {
     public function getQrcode()
     {
-        return service('halberd')->qrcode($this->username ?? $this->email, $this->secret);
+        return service('halberd')->qrcode($this->secret2, $this->secret);
     }
 }
