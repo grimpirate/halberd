@@ -1,1 +1,0 @@
-Documentation: [https://grimpirate.github.io/halberd](https://grimpirate.github.io/halberd)
