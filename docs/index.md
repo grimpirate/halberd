@@ -2,7 +2,7 @@
 icon: lucide/info
 ---
 
-# Halberd
+# About
 
 A TOTP (Time-Based One-Time Password) Two-Factor Authentication Module for [codeigniter4/shield](https://github.com/codeigniter4/shield).
 
