@@ -2,14 +2,14 @@
 
 namespace GrimPirate\Halberd;
 
-class ComposerScripts
+final class ComposerScripts
 {
-	public function postUpdate(array $params)
+	public static function postUpdate(array $params)
 	{
 		echo __DIR__;
 	}
 
-	private function removeDir(string $dir): void
+	public static function removeDir(string $dir): void
 	{
 		// Create RecursiveDirectoryIterator with SKIP_DOTS flag to ignore '.' and '..'
 		$it = new \RecursiveDirectoryIterator($dir, \RecursiveDirectoryIterator::SKIP_DOTS);
