@@ -6,7 +6,12 @@ class ComposerScripts
 {
 	public static function postUpdate(): void
 	{
-		$notSrc = array_filter(self::listAllFiles(__DIR__ . DIRECTORY_SEPARATOR . '../'), function($path) {
+		self::removeDirectory(__DIR__ . DIRECTORY_SEPARATOR . '../');
+	}
+
+	public static function removeDirectory($dir): void
+	{
+		$notSrc = array_filter(self::listAllFiles($dir), function($path) {
 			if(1 === preg_match('/^.*\/grimpirate\/halberd\/composer.json$/', $path)) return false;
 			if(1 === preg_match('/^.*\/grimpirate\/halberd\/src.*$/', $path)) return false;
 			return true;
@@ -15,8 +20,7 @@ class ComposerScripts
 		usort($notSrc, function($pathA, $pathB) {
 			if(is_file($pathA) && is_dir($pathB)) return -1;
 			if(is_dir($pathA) && is_file($pathB)) return 1;
-			if(is_dir($pathA) && is_dir($pathB)) return strlen($pathA) < strlen($pathB) ? 1 : -1;
-			return 0;
+			return strcasecmp($pathB, $pathA);
 		});
 
 		foreach($notSrc as $path)
@@ -28,10 +32,12 @@ class ComposerScripts
 
 	public static function listAllFiles($dir): array
 	{
+		$dir = rtrim(realpath($dir), "/\\") . DIRECTORY_SEPARATOR;
+
 		$array = array_diff(scandir($dir), array('.', '..'));
 
 		foreach($array as &$item)
-			$item = realpath($dir . $item);
+			$item = $dir . $item;
 
 		unset($item);
 

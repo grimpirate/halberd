@@ -13,10 +13,6 @@ return [
 
     // Spark commands
     'spark' => [
-        'initialize' => [
-            'description' => 'Initializes configuration parameters for Halberd.',
-            'usage' => 'halberd:ini',
-        ],
         'totp' => [
             'input' => [
                 'id' => 'ID?',
@@ -26,6 +22,10 @@ return [
             'arguments' => [
                 'id' => 'User ID',
             ],
+        ],
+        'tidy' => [
+            'description' => "Removes unneeded files from Halberd package.",
+            'usage' => 'halberd:tidy',
         ],
     ],
 ];

@@ -4,6 +4,8 @@ icon: lucide/wrench
 
 # Customization
 
+## Views
+
 Create the following structure in your application to override the default view[^1]:
 
 ```
