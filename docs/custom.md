@@ -4,7 +4,7 @@ icon: lucide/wrench
 
 # Customization
 
-Create the following structure in your application to override the default view[^1] displayed by the Halberd module:
+Create the following structure in your application to override the default view[^1]:
 
 ```
 app/
