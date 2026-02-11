@@ -6,7 +6,7 @@ icon: lucide/terminal
 
 ## halberd:totp
 
-Allows an administrator to ==overwrite== a user's current *totp_2fa* authentication identity with a new secret.
+Allows an administrator to regenerate a user's *totp_2fa* authentication identity.
 
 ``` bash title=">_"
 php spark halberd:totp <id>
