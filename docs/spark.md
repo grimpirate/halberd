@@ -19,3 +19,7 @@ php spark halberd:totp <id>
 ## halberd:tidy
 
 Cleans up the grimpirate/halberd vendor repository to remove all but the needed source files.
+
+``` bash title=">_"
+php spark halberd:tidy
+```
