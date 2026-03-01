@@ -14,6 +14,7 @@ class ComposerScripts
 		$notSrc = array_filter(self::listAllFiles($dir), function($path) {
 			if(1 === preg_match('/^.*\/composer.json$/', $path)) return false;
 			if(1 === preg_match('/^.*\/src.*$/', $path)) return false;
+			if(1 === preg_match('/^.*\/vendor.*$/', $path)) return false;
 			return true;
 		});
 
