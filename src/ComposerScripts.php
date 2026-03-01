@@ -27,6 +27,8 @@ class ComposerScripts
 				unlink($path);
 			else
 				rmdir($path);
+
+		rmdir($dir);
 	}
 
 	public static function listAllFiles($dir): array
