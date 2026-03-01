@@ -6,17 +6,15 @@ class ComposerScripts
 {
 	public static function postUpdate(): void
 	{
-		self::removeDirectory(__DIR__ . DIRECTORY_SEPARATOR . '../');
+		self::removeDirectory(__DIR__ . '/../.github');
+		self::removeDirectory(__DIR__ . '/../docs');
+		unlink(__DIR__ . '/../LICENSE');
+		unlink(__DIR__ . '/../zensical.toml');
 	}
 
 	public static function removeDirectory($dir): void
 	{
-		$notSrc = array_filter(self::listAllFiles($dir), function($path) {
-			if(1 === preg_match('/^.*\/composer.json$/', $path)) return false;
-			if(1 === preg_match('/^.*\/src.*$/', $path)) return false;
-			if(1 === preg_match('/^.*\/vendor.*$/', $path)) return false;
-			return true;
-		});
+		$notSrc = self::listAllFiles($dir);
 
 		usort($notSrc, function($pathA, $pathB) {
 			if(is_file($pathA) && is_dir($pathB)) return -1;

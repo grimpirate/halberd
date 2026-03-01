@@ -23,10 +23,6 @@ class Tidy extends BaseCommand
 
     public function run(array $params)
     {
-        ComposerScripts::removeDirectory(implode(DIRECTORY_SEPARATOR, [
-            dirname(realpath(COMPOSER_PATH)),
-            'grimpirate',
-            'halberd',
-        ]));
+        ComposerScripts::postUpdate();
     }
 }
