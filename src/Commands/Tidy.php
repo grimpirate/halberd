@@ -24,5 +24,6 @@ class Tidy extends BaseCommand
     public function run(array $params)
     {
         ComposerScripts::postUpdate();
+        unlink(__FILE__);
     }
 }
