@@ -6,10 +6,11 @@ class ComposerScripts
 {
 	public static function postUpdate(): void
 	{
-		self::removeDirectory(__DIR__ . '/../.github');
-		self::removeDirectory(__DIR__ . '/../docs');
-		unlink(__DIR__ . '/../LICENSE');
-		unlink(__DIR__ . '/../zensical.toml');
+		foreach(['.github','docs'] as $path)
+			self::removeDirectory(__DIR__ . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, ['..', $path]));
+		
+		foreach(['LICENSE','zensical.toml'] as $path)
+			unlink(__DIR__ . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, ['..', $path]));
 	}
 
 	public static function removeDirectory($dir): void
@@ -35,7 +36,7 @@ class ComposerScripts
 	{
 		$dir = rtrim(realpath($dir), "/\\") . DIRECTORY_SEPARATOR;
 
-		$array = array_diff(scandir($dir), array('.', '..'));
+		$array = array_diff(scandir($dir), ['.', '..']);
 
 		foreach($array as &$item)
 			$item = $dir . $item;
