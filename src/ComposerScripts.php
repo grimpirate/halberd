@@ -7,7 +7,7 @@ class ComposerScripts
 	public static function postUpdate(): void
 	{
 		foreach(['.github','docs'] as $path)
-			self::removeDirectory(__DIR__ . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, ['..', $path]));
+			static::removeDirectory(__DIR__ . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, ['..', $path]));
 		
 		foreach(['LICENSE','zensical.toml'] as $path)
 			unlink(__DIR__ . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, ['..', $path]));
@@ -15,7 +15,7 @@ class ComposerScripts
 
 	public static function removeDirectory($dir): void
 	{
-		$notSrc = self::listAllFiles($dir);
+		$notSrc = static::listAllFiles($dir);
 
 		usort($notSrc, function($pathA, $pathB) {
 			if(is_file($pathA) && is_dir($pathB)) return -1;
@@ -45,7 +45,7 @@ class ComposerScripts
 
 		foreach($array as $item)
 			if(is_dir($item))
-				$array = array_merge($array, self::listAllFiles($item . DIRECTORY_SEPARATOR));
+				$array = array_merge($array, static::listAllFiles($item . DIRECTORY_SEPARATOR));
 
 		return $array;
 	}
