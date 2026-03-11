@@ -17,6 +17,10 @@ class Halberd
 {
 	public function __construct(protected Google2FA $google2fa = new Google2FA())
 	{
+		$this->google2fa->setAlgorithm(setting('Totp.algorithm'));
+		$this->google2fa->setOneTimePasswordLength(setting('Totp.oneTimePasswordLength'));
+		$this->google2fa->setKeyRegeneration(setting('Totp.keyRegeneration'));
+		$this->google2fa->setWindow(setting('Totp.window'));
 	}
 
 	public function generateSecretKey()
