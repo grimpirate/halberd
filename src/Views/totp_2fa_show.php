@@ -10,7 +10,7 @@ helper('form');
 
     <title><?= lang('Totp.title2FA') ?></title>
 
-    <style>
+    <style {csp-style-nonce}>
         svg
         {
             width: 100%;
