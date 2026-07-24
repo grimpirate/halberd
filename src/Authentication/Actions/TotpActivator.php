@@ -18,7 +18,7 @@ use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
 use CodeIgniter\Shield\Authentication\Actions\ConditionalActionInterface;
 
 
-class TotpActivator implements ActionInterface, ConditionalActionInterface;
+class TotpActivator implements ActionInterface, ConditionalActionInterface
 {
     private string $type = Totp::ID_TYPE_TOTP_2FA;
 
