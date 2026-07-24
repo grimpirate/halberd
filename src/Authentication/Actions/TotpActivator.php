@@ -15,10 +15,17 @@ use GrimPirate\Halberd\Entities\UserIdentity;
 use GrimPirate\Halberd\Models\UserIdentityModel;
 
 use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
+use CodeIgniter\Shield\Authentication\Actions\ConditionalActionInterface;
 
-class TotpActivator implements ActionInterface
+
+class TotpActivator implements ActionInterface, ConditionalActionInterface;
 {
     private string $type = Totp::ID_TYPE_TOTP_2FA;
+
+    public function appliesTo(User $user): bool
+    {
+        return $user->can(setting('Totp.permission'));
+    }
 
     /**
      * Shows the initial screen to the user with a QR code for activation
