@@ -25,7 +25,7 @@ class TotpActivator implements ActionInterface, ConditionalActionInterface
     public function appliesTo(User $user): bool
     {
         $permission = setting('Totp.permission');
-        if(is_empty($permission)) return true;
+        if(empty($permission)) return true;
         return $user->can($permission);
     }
 
