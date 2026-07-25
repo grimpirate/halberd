@@ -16,6 +16,7 @@ if (!function_exists('configgle'))
             'Totp.secretKeyLength' => setting($key),
             'Totp.oneTimePasswordLength',
             'Totp.window' => (function($num) use ($key) {
+                $key = substr($key, 5);
                 $num = filter_var($num, FILTER_VALIDATE_INT);
                 if(
                     $num === false
@@ -26,6 +27,7 @@ if (!function_exists('configgle'))
                 return $num;
             })(setting($key)),
             'Totp.keyRegeneration' => (function($num) use ($key) {
+                $key = substr($key, 5);
                 $num = filter_var($num, FILTER_VALIDATE_INT);
                 if(
                     $num === false
@@ -40,6 +42,7 @@ if (!function_exists('configgle'))
                 return $num;
             })(setting($key)),
             'Totp.issuer' => (function($str) use ($key) {
+                $key = substr($key, 5);
                 if(
                     empty($str)
                     || !is_string($str)
@@ -49,6 +52,7 @@ if (!function_exists('configgle'))
                 return $str;                
             })(setting($key)),
             'Totp.permission' => (function($str) use ($key) {
+                $key = substr($key, 5);
                 $permissions = array_keys(setting('AuthGroups.permissions'));
                 if(
                     empty($str)
