@@ -17,15 +17,17 @@ class Halberd
 {
 	public function __construct(protected Google2FA $google2fa = new Google2FA())
 	{
-		$this->google2fa->setAlgorithm(setting('Totp.algorithm'));
-		$this->google2fa->setOneTimePasswordLength(setting('Totp.oneTimePasswordLength'));
-		$this->google2fa->setKeyRegeneration(setting('Totp.keyRegeneration'));
-		$this->google2fa->setWindow(setting('Totp.window'));
+		helper('configgle');
+		$this->google2fa->setAlgorithm(configgle('Totp.algorithm'));
+		$this->google2fa->setOneTimePasswordLength(configgle('Totp.oneTimePasswordLength'));
+		$this->google2fa->setKeyRegeneration(configgle('Totp.keyRegeneration'));
+		$this->google2fa->setWindow(configgle('Totp.window'));
 	}
 
 	public function generateSecretKey()
 	{
-		return $this->google2fa->generateSecretKey(setting('Totp.secretKeyLength'));
+		helper('configgle');
+		return $this->google2fa->generateSecretKey(configgle('Totp.secretKeyLength'));
 	}
 
 	public function verifyKeyNewer($secret, $code, $timestamp)
@@ -35,6 +37,8 @@ class Halberd
 
 	public function qrcode($accountname, $secret)
 	{
+		helper('configgle');
+		
 		$writer = new Writer(new ImageRenderer(
 			new RendererStyle(120),
 			new SvgImageBackEnd()
@@ -43,7 +47,7 @@ class Halberd
 		$path = preg_replace(
 			'/^.*d="([^"]+).*$/s',	// Leave only path data
 			'$1',
-			$writer->writeString($this->google2fa->getQRCodeUrl(setting('Totp.issuer'), $accountname, $secret)));
+			$writer->writeString($this->google2fa->getQRCodeUrl(configgle('Totp.issuer'), $accountname, $secret)));
 
 		// Optimize path data
 		$path = preg_split('/([MLZ]+)/', $path, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);

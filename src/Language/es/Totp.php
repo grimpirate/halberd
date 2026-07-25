@@ -28,4 +28,17 @@ return [
             ],
         ],
     ],
+
+    'exception' => [
+        'config' => [
+            'oneTimePasswordLength' => 'Debe ser un número entero mayor que 0.',
+            'keyRegeneration' => 'Debe ser un número entero mayor que 0.',
+            'window' => 'Debe ser un número entero mayor que 0.',
+            'issuer' => 'Debe ser una cadena no vacía.',
+            'permission' => 'Debe ser una cadena no vacía en la configuración de $permissions de AuthGroups.'
+        ],
+        'warning' => [
+            'keyRegeneration' => 'Para garantizar la mayor compatibilidad con aplicaciones de autenticación, este valor debe mantenerse en 30.',
+        ],
+    ],
 ];

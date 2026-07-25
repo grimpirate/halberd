@@ -28,4 +28,17 @@ return [
             'usage' => 'halberd:tidy',
         ],
     ],
+
+    'exception' => [
+        'config' => [
+            'oneTimePasswordLength' => 'Must be an integer greater than 0.',
+            'keyRegeneration' => 'Must be an integer greater than 0.',
+            'window' => 'Must be an integer greater than 0.',
+            'issuer' => 'Must be a non-empty string.',
+            'permission' => 'Must be a non-empty string in AuthGroups $permissions configuration.'
+        ],
+        'warning' => [
+            'keyRegeneration' => 'For largest compatibility with authenticator apps, this value should be kept at 30.',
+        ],
+    ],
 ];
