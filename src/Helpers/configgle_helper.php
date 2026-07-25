@@ -39,7 +39,7 @@ if (!function_exists('configgle'))
 
                 return $num;
             })(setting($key)),
-            'Totp.issuer' => (function($str) user ($key) {
+            'Totp.issuer' => (function($str) use ($key) {
                 if(
                     empty($str)
                     || !is_string($str)
@@ -48,7 +48,7 @@ if (!function_exists('configgle'))
 
                 return $str;                
             })(setting($key)),
-            'Totp.permission' => (function($str) user ($key) {
+            'Totp.permission' => (function($str) use ($key) {
                 $permissions = array_keys(setting('AuthGroups.permissions'));
                 if(
                     empty($str)
@@ -59,7 +59,7 @@ if (!function_exists('configgle'))
                 
                 return $str;
             })(setting($key)),
-        }
+        };
     }
 
 
