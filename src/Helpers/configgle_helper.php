@@ -61,6 +61,4 @@ if (!function_exists('configgle'))
             })(setting($key)),
         };
     }
-
-
 }
