@@ -29,8 +29,8 @@ return [
         ],
     ],
 
-    'exception' => [
-        'config' => [
+    'config' => [
+        'exception' => [
             'oneTimePasswordLength' => 'Must be an integer greater than 0.',
             'keyRegeneration' => 'Must be an integer greater than 0.',
             'window' => 'Must be an integer greater than 0.',
