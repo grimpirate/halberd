@@ -33,17 +33,18 @@ class TotpActivator implements ActionInterface, ConditionalActionInterface
      */
     public function show(): string
     {
+        helper('configgle');
         /** @var Totp $authenticator */
-        $authenticator = auth('totp')->getAuthenticator();
+        $authenticator = auth(configgle('Totp.authenticator'))->getAuthenticator();
 
         $user = $authenticator->getPendingUser();
         
         if ($user === null)
-            throw new RuntimeException('Cannot get the pending login User.');
+            throw new RuntimeException(lang('Totp.exception.pending'));
 
         $identity = $this->getIdentity($user);
 
-        return view(setting('Auth.views')['action_totp_2fa'], $user->isNotActivated() ? ['qrcode' => $identity->qrcode, 'secret' => $identity->secret] : []);
+        return view(setting('Auth.views')[Totp::ACTION_TOTP_2FA], $user->isNotActivated() ? ['qrcode' => $identity->qrcode, 'secret' => $identity->secret] : []);
     }
 
     /**
@@ -64,15 +65,16 @@ class TotpActivator implements ActionInterface, ConditionalActionInterface
      */
     public function verify(IncomingRequest $request)
     {
+        helper('configgle');
         /** @var Totp $authenticator */
-        $authenticator = auth('totp')->getAuthenticator();
+        $authenticator = auth(configgle('Totp.authenticator'))->getAuthenticator();
 
         $postedToken = $request->getPost('token');
 
         $user = $authenticator->getPendingUser();
         
         if ($user === null)
-            throw new RuntimeException('Cannot get the pending login User.');
+            throw new RuntimeException(lang('Totp.exception.pending'));
 
         $identity = $this->getIdentity($user);
 
@@ -81,7 +83,7 @@ class TotpActivator implements ActionInterface, ConditionalActionInterface
         {
             session()->setFlashdata('error', lang($user->isNotActivated() ? 'Auth.invalidActivateToken' : 'Auth.invalid2FAToken'));
 
-            return view(setting('Auth.views')['action_totp_2fa'], $user->isNotActivated() ? ['qrcode' => $identity->qrcode, 'secret' => $identity->secret] : []);
+            return view(setting('Auth.views')[Totp::ACTION_TOTP_2FA], $user->isNotActivated() ? ['qrcode' => $identity->qrcode, 'secret' => $identity->secret] : []);
         }
 
         // getUser instead of getPendingUser updates user state to LOGGED_IN

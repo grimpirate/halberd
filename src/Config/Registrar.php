@@ -2,20 +2,22 @@
 
 namespace GrimPirate\Halberd\Config;
 
+use GrimPirate\Halberd\Authentication\Authenticators\Totp;
+
 class Registrar
 {
     public static function Auth(): array
     {
         return [
             'views' => [
-                'action_totp_2fa' => '\GrimPirate\Halberd\Views\totp_2fa_show',
+                Totp::ACTION_TOTP_2FA => '\GrimPirate\Halberd\Views\totp_2fa_show',
             ],
             'actions' => [
                 'register' => \GrimPirate\Halberd\Authentication\Actions\TotpActivator::class,
                 'login'    => \GrimPirate\Halberd\Authentication\Actions\TotpActivator::class,
             ],
             'authenticators' => [
-                'totp' => \GrimPirate\Halberd\Authentication\Authenticators\Totp::class,
+                setting('Totp.authenticator') => \GrimPirate\Halberd\Authentication\Authenticators\Totp::class,
             ],
         ];
     }

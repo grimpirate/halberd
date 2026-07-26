@@ -14,4 +14,5 @@ class Totp extends BaseConfig
     public int $secretKeyLength       = 32; // Updated to reflect https://github.com/antonioribeiro/google2fa/releases/tag/v9.0.0
     public string $issuer             = 'Halberd';
     public string $permission         = 'mfa.halberd';
+    public string $authenticator      = 'totp';
 }

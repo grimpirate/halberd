@@ -31,13 +31,19 @@ return [
 
     'permission' => 'Enables the TOTP Halberd module',
 
+    'exception' => [
+        'user' => 'Cannot get the User.',
+        'pending' => 'Cannot get the pending login User.',
+    ],
+
     'config' => [
         'exception' => [
-            'oneTimePasswordLength' => 'Must be an integer greater than 0.',
-            'keyRegeneration' => 'Must be an integer greater than 0.',
-            'window' => 'Must be an integer greater than 0.',
+            'authenticator' => 'Must be a non-empty string.',
             'issuer' => 'Must be a non-empty string.',
-            'permission' => 'Must be a non-empty string in AuthGroups $permissions configuration.'
+            'keyRegeneration' => 'Must be an integer greater than 0.',
+            'oneTimePasswordLength' => 'Must be an integer greater than 0.',
+            'permission' => 'Must be a non-empty string in AuthGroups $permissions configuration.',
+            'window' => 'Must be an integer greater than 0.',
         ],
         'warning' => [
             'keyRegeneration' => 'For largest compatibility with authenticator apps, this value should be kept at 30.',

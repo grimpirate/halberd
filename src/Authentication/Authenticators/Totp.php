@@ -13,6 +13,7 @@ class Totp extends Session
 {
     // Identity types
     public const ID_TYPE_TOTP_2FA = 'totp_2fa';
+    public const ACTION_TOTP_2FA = 'action_totp_2fa';
 
     /**
      * Check token in Action
@@ -22,7 +23,7 @@ class Totp extends Session
     public function checkAction(UserIdentity $identity, string $token): bool
     {
         if(!$this->loggedIn() && !$this->isPending())
-            throw new LogicException('Cannot get the User.');
+            throw new LogicException(lang('Totp.exception.user'));
 
         // Irrelevant that $token could be an empty '' string
         if (!service('halberd')->verifyKeyNewer($identity->secret, $token, $identity->last_used_at->getTimestamp()))
