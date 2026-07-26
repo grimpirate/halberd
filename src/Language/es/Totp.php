@@ -29,6 +29,8 @@ return [
         ],
     ],
 
+    'permission' => 'Habilita el módulo TOTP Halberd',
+
     'config' => [
         'exception' => [
             'oneTimePasswordLength' => 'Debe ser un número entero mayor que 0.',

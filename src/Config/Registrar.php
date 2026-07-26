@@ -19,4 +19,14 @@ class Registrar
             ],
         ];
     }
+
+    public static function AuthGroups(): array
+    {
+        helper('configgle');
+        return [
+            'permissions' => [
+                configgle('Totp.permission') => lang('Totp.permission'),
+            ],
+        ];
+    }
 }

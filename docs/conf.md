@@ -31,13 +31,6 @@ public array $groups = [
 	],
 ];
 
-public array $permissions = [
-
-	...
-
-	'mfa.halberd' => 'Enables the TOTP Halberd module',
-];
-
 public array $matrix = [
 
 	...
