@@ -14,7 +14,6 @@ totp.window                = 1
 totp.secretKeyLength       = 32
 totp.issuer                = 'Halberd'
 totp.permission            = 'mfa.halberd'
-totp.view                  = 'action_totp_2fa'
 totp.authenticator         = 'totp'
 ```
 
