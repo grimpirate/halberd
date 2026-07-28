@@ -41,8 +41,9 @@ if (!function_exists('configgle'))
 
                 return $num;
             })(setting($key)),
+            'Totp.authenticator',
             'Totp.issuer',
-            'Totp.authenticator' => (function($str) use ($key) {
+            'Totp.view' => (function($str) use ($key) {
                 $key = substr($key, 5);
                 if(
                     empty($str)

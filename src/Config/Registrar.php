@@ -10,7 +10,7 @@ class Registrar
     {
         return [
             'views' => [
-                Totp::ACTION_TOTP_2FA => '\GrimPirate\Halberd\Views\totp_2fa_show',
+                setting('Totp.view') => '\GrimPirate\Halberd\Views\totp_2fa_show',
             ],
             'actions' => [
                 'register' => \GrimPirate\Halberd\Authentication\Actions\TotpActivator::class,

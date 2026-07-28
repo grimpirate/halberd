@@ -44,7 +44,7 @@ class TotpActivator implements ActionInterface, ConditionalActionInterface
 
         $identity = $this->getIdentity($user);
 
-        return view(setting('Auth.views')[Totp::ACTION_TOTP_2FA], $user->isNotActivated() ? ['qrcode' => $identity->qrcode, 'secret' => $identity->secret] : []);
+        return view(setting('Auth.views')[configgle('Totp.view')], $user->isNotActivated() ? ['qrcode' => $identity->qrcode, 'secret' => $identity->secret] : []);
     }
 
     /**
@@ -83,7 +83,7 @@ class TotpActivator implements ActionInterface, ConditionalActionInterface
         {
             session()->setFlashdata('error', lang($user->isNotActivated() ? 'Auth.invalidActivateToken' : 'Auth.invalid2FAToken'));
 
-            return view(setting('Auth.views')[Totp::ACTION_TOTP_2FA], $user->isNotActivated() ? ['qrcode' => $identity->qrcode, 'secret' => $identity->secret] : []);
+            return view(setting('Auth.views')[configgle('Totp.view')], $user->isNotActivated() ? ['qrcode' => $identity->qrcode, 'secret' => $identity->secret] : []);
         }
 
         // getUser instead of getPendingUser updates user state to LOGGED_IN

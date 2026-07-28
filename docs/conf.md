@@ -15,6 +15,7 @@ totp.secretKeyLength       = 32
 totp.issuer                = 'Halberd'
 totp.permission            = 'mfa.halberd'
 totp.authenticator         = 'totp'
+totp.view                  = 'action_totp_2fa'
 ```
 
 ## AuthGroups

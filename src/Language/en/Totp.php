@@ -43,6 +43,7 @@ return [
             'keyRegeneration' => 'Must be an integer greater than 0.',
             'oneTimePasswordLength' => 'Must be an integer greater than 0.',
             'permission' => 'Must be a non-empty string in AuthGroups $permissions configuration.',
+            'view' => 'Must be a non-empty string.',
             'window' => 'Must be an integer greater than 0.',
         ],
         'warning' => [

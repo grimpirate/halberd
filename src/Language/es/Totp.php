@@ -43,6 +43,7 @@ return [
             'keyRegeneration' => 'Debe ser un número entero mayor que 0.',
             'oneTimePasswordLength' => 'Debe ser un número entero mayor que 0.',
             'permission' => 'Debe ser una cadena no vacía en la configuración de $permissions de AuthGroups.'
+            'view' => 'Debe ser una cadena no vacía.',
             'window' => 'Debe ser un número entero mayor que 0.',
         ],
         'warning' => [

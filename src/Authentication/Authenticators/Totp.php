@@ -13,7 +13,6 @@ class Totp extends Session
 {
     // Identity types
     public const ID_TYPE_TOTP_2FA = 'totp_2fa';
-    public const ACTION_TOTP_2FA = 'action_totp_2fa';
 
     /**
      * Check token in Action

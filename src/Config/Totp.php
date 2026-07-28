@@ -15,4 +15,5 @@ class Totp extends BaseConfig
     public string $issuer             = 'Halberd';
     public string $permission         = 'mfa.halberd';
     public string $authenticator      = 'totp';
+    public string $view               = 'action_totp_2fa';
 }
